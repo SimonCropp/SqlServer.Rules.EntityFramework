@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>Verify.EntityFramework.Tests</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="EfLocalDb" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+    <PackageReference Include="NUnit" />
+    <PackageReference Include="NUnit3TestAdapter" />
+    <PackageReference Include="Verify.DiffPlex" />
+    <PackageReference Include="MarkdownSnippets.MsBuild" PrivateAssets="all" />
+    <PackageReference Include="Verify.NUnit" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="ProjectDefaults" PrivateAssets="all" />
+    <ProjectReference Include="..\SqlServer.Rules.EntityFramework\SqlServer.Rules.EntityFramework.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
+  </ItemGroup>
+</Project>

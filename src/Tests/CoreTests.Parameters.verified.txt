@@ -1,0 +1,17 @@
+﻿{
+  ef: {
+    Type: ReaderExecutedAsync,
+    HasTransaction: false,
+    Parameters: {
+      @p0 (Int32): 0,
+      @p1 (String): Guid_1
+    },
+    Text:
+set implicit_transactions off;
+
+set nocount on;
+
+insert  into Companies (Id, Name)
+values                (@p0, @p1)
+  }
+}
