@@ -25,7 +25,7 @@ builder.UseSqlServer(connection);
 builder.EnableRecording();
 var data = new SampleDbContext(builder.Options);
 ```
-<sup><a href='/src/Tests/CoreTests.cs#L202-L209' title='Snippet source file'>snippet source</a> | <a href='#snippet-EnableRecording' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/CoreTests.cs#L108-L115' title='Snippet source file'>snippet source</a> | <a href='#snippet-EnableRecording' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 `EnableRecording` should only be called in the test context.
@@ -54,7 +54,7 @@ await data
 
 await Verify();
 ```
-<sup><a href='/src/Tests/CoreTests.cs#L269-L287' title='Snippet source file'>snippet source</a> | <a href='#snippet-Recording' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/CoreTests.cs#L142-L160' title='Snippet source file'>snippet source</a> | <a href='#snippet-Recording' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Will result in the following verified file:
@@ -89,7 +89,7 @@ var queryable = data.Companies
     .Where(_ => _.Name == "company name");
 await Verify(queryable);
 ```
-<sup><a href='/src/Tests/CoreTests.cs#L159-L165' title='Snippet source file'>snippet source</a> | <a href='#snippet-Queryable' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/CoreTests.cs#L65-L71' title='Snippet source file'>snippet source</a> | <a href='#snippet-Queryable' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Will result in the following verified files:
@@ -138,7 +138,7 @@ await Verify(data.AllData())
         serializer =>
             serializer.TypeNameHandling = TypeNameHandling.Objects);
 ```
-<sup><a href='/src/Tests/CoreTests.cs#L138-L145' title='Snippet source file'>snippet source</a> | <a href='#snippet-AllData' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/CoreTests.cs#L44-L51' title='Snippet source file'>snippet source</a> | <a href='#snippet-AllData' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Will result in the following verified file with all data in the database:
