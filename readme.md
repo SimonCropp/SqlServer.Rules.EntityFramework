@@ -67,14 +67,13 @@ Will result in the following verified file:
     Type: ReaderExecutedAsync,
     HasTransaction: false,
     Text:
-select c.Id,
-       c.Name
-from   Companies as c
-where  c.Name = N'Title'
+SELECT [c].[Id], [c].[Name]
+FROM [Companies] AS [c]
+WHERE [c].[Name] = N'Title'
   }
 }
 ```
-<sup><a href='/src/Tests/CoreTests.RecordingTest.verified.txt#L1-L11' title='Snippet source file'>snippet source</a> | <a href='#snippet-CoreTests.RecordingTest.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/CoreTests.RecordingTest.verified.txt#L1-L10' title='Snippet source file'>snippet source</a> | <a href='#snippet-CoreTests.RecordingTest.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
