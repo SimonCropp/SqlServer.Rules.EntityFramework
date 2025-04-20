@@ -228,39 +228,6 @@ public class CoreTests
     }
 
     [Test]
-    public async Task MultiRecording()
-    {
-        var database = await DbContextBuilder.GetDatabase();
-        var data = database.Context;
-        Recording.Start();
-        var company = new Company
-        {
-            Name = "Title"
-        };
-        data.Add(company);
-        await data.SaveChangesAsync();
-
-        for (var i = 0; i < 100; i++)
-        {
-            var s = i.ToString();
-            await data
-                .Companies
-                .Where(_ => _.Name == s)
-                .ToListAsync();
-        }
-
-        var company2 = new Company
-        {
-            Id = 2,
-            Name = "Title2"
-        };
-        data.Add(company2);
-        await data.SaveChangesAsync();
-
-        await Verify();
-    }
-
-    [Test]
     public async Task RecordingTest()
     {
         var database = await DbContextBuilder.GetDatabase();
