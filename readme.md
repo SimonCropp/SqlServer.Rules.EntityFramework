@@ -25,7 +25,7 @@ builder.UseSqlServer(connection);
 builder.EnableRecording();
 var data = new SampleDbContext(builder.Options);
 ```
-<sup><a href='/src/Tests/CoreTests.cs#L108-L115' title='Snippet source file'>snippet source</a> | <a href='#snippet-EnableRecording' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/CoreTests.cs#L8-L15' title='Snippet source file'>snippet source</a> | <a href='#snippet-EnableRecording' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 `EnableRecording` should only be called in the test context.
@@ -54,7 +54,7 @@ await data
 
 await Verify();
 ```
-<sup><a href='/src/Tests/CoreTests.cs#L142-L160' title='Snippet source file'>snippet source</a> | <a href='#snippet-Recording' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/CoreTests.cs#L24-L42' title='Snippet source file'>snippet source</a> | <a href='#snippet-Recording' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Will result in the following verified file:
@@ -74,74 +74,6 @@ WHERE [c].[Name] = N'Title'
 }
 ```
 <sup><a href='/src/Tests/CoreTests.RecordingTest.verified.txt#L1-L10' title='Snippet source file'>snippet source</a> | <a href='#snippet-CoreTests.RecordingTest.verified.txt' title='Start of snippet'>anchor</a></sup>
-<!-- endSnippet -->
-
-
-## AllData
-
-This test:
-
-<!-- snippet: AllData -->
-<a id='snippet-AllData'></a>
-```cs
-await Verify(data.AllData())
-    .AddExtraSettings(
-        serializer =>
-            serializer.TypeNameHandling = TypeNameHandling.Objects);
-```
-<sup><a href='/src/Tests/CoreTests.cs#L44-L51' title='Snippet source file'>snippet source</a> | <a href='#snippet-AllData' title='Start of snippet'>anchor</a></sup>
-<!-- endSnippet -->
-
-Will result in the following verified file with all data in the database:
-
-<!-- snippet: CoreTests.AllData.verified.txt -->
-<a id='snippet-CoreTests.AllData.verified.txt'></a>
-```txt
-[
-  {
-    $type: Company,
-    Id: 1,
-    Name: Company1
-  },
-  {
-    $type: Company,
-    Id: 4,
-    Name: Company2
-  },
-  {
-    $type: Company,
-    Id: 6,
-    Name: Company3
-  },
-  {
-    $type: Company,
-    Id: 7,
-    Name: Company4
-  },
-  {
-    $type: Employee,
-    Id: 2,
-    CompanyId: 1,
-    Name: Employee1,
-    Age: 25
-  },
-  {
-    $type: Employee,
-    Id: 3,
-    CompanyId: 1,
-    Name: Employee2,
-    Age: 31
-  },
-  {
-    $type: Employee,
-    Id: 5,
-    CompanyId: 4,
-    Name: Employee4,
-    Age: 34
-  }
-]
-```
-<sup><a href='/src/Tests/CoreTests.AllData.verified.txt#L1-L43' title='Snippet source file'>snippet source</a> | <a href='#snippet-CoreTests.AllData.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

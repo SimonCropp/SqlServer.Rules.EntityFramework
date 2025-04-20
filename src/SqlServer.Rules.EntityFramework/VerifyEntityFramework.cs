@@ -2,43 +2,6 @@
 
 public static class VerifyEntityFramework
 {
-    public static async IAsyncEnumerable<object> AllData(this DbContext data)
-    {
-        foreach (var entityType in data
-                     .EntityTypes()
-                     .OrderBy(_ => _.Name)
-                     .Where(_ => !_.IsOwned()))
-        {
-            var clrType = entityType.ClrType;
-            var set = data.Set(clrType);
-            var queryable = set.AsNoTracking(clrType);
-
-            IEnumerable<object> list = await queryable.ToListAsync();
-            var idProperty = clrType.GetProperty("Id", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-
-            if (idProperty != null)
-            {
-                list = list.OrderBy(_ => idProperty.GetValue(_));
-            }
-
-            foreach (var entity in list)
-            {
-                yield return entity;
-            }
-        }
-    }
-
-    static IEnumerable<(Type type, string name)> GetNavigations(this IModel model)
-    {
-        foreach (var type in model.GetEntityTypes())
-        {
-            foreach (var navigation in type.GetNavigations())
-            {
-                yield return new(type.ClrType, navigation.Name);
-            }
-        }
-    }
-
     public static void Initialize(DbContext context) =>
         Initialize(context.Model);
 
