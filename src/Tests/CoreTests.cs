@@ -191,10 +191,4 @@ public class CoreTests
 
         #endregion
     }
-
-    static DbContextOptions<SampleDbContext> DbContextOptions(
-        [CallerMemberName] string databaseName = "") =>
-        new DbContextOptionsBuilder<SampleDbContext>()
-            .UseInMemoryDatabase(databaseName)
-            .Options;
 }

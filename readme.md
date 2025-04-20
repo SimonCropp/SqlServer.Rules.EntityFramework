@@ -78,54 +78,6 @@ where  c.Name = N'Title'
 <!-- endSnippet -->
 
 
-## Queryable
-
-This test:
-
-<!-- snippet: Queryable -->
-<a id='snippet-Queryable'></a>
-```cs
-var queryable = data.Companies
-    .Where(_ => _.Name == "company name");
-await Verify(queryable);
-```
-<sup><a href='/src/Tests/CoreTests.cs#L65-L71' title='Snippet source file'>snippet source</a> | <a href='#snippet-Queryable' title='Start of snippet'>anchor</a></sup>
-<!-- endSnippet -->
-
-Will result in the following verified files:
-
-
-### EF Core
-
-
-#### CoreTests.Queryable.verified.txt
-
-<!-- snippet: CoreTests.Queryable.verified.txt -->
-<a id='snippet-CoreTests.Queryable.verified.txt'></a>
-```txt
-[
-  {
-    Name: company name
-  }
-]
-```
-<sup><a href='/src/Tests/CoreTests.Queryable.verified.txt#L1-L5' title='Snippet source file'>snippet source</a> | <a href='#snippet-CoreTests.Queryable.verified.txt' title='Start of snippet'>anchor</a></sup>
-<!-- endSnippet -->
-
-
-#### CoreTests.Queryable.verified.sql
-
-<!-- snippet: CoreTests.Queryable.verified.sql -->
-<a id='snippet-CoreTests.Queryable.verified.sql'></a>
-```sql
-SELECT [c].[Id], [c].[Name]
-FROM [Companies] AS [c]
-WHERE [c].[Name] = N'company name'
-```
-<sup><a href='/src/Tests/CoreTests.Queryable.verified.sql#L1-L3' title='Snippet source file'>snippet source</a> | <a href='#snippet-CoreTests.Queryable.verified.sql' title='Start of snippet'>anchor</a></sup>
-<!-- endSnippet -->
-
-
 ## AllData
 
 This test:

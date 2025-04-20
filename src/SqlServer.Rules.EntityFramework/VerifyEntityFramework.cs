@@ -55,31 +55,10 @@ public static class VerifyEntityFramework
 
         InnerVerifier.ThrowIfVerifyHasBeenRun();
 
-        VerifierSettings.RegisterFileConverter(
-            QueryableToSql,
-            (target, _) => QueryableConverter.IsQueryable(target));
-        var formatSql = model != null && model.IsSqlServer();
         VerifierSettings.IgnoreMembersWithType(typeof(IDbContextFactory<>));
         VerifierSettings.IgnoreMembersWithType<DbContext>();
         var converters = DefaultContractResolver.Converters;
-        converters.Add(new DbUpdateExceptionConverter());
-        converters.Add(new TrackerConverter());
-        converters.Add(new QueryableConverter(formatSql));
         converters.Add(new LogEntryConverter());
-    }
-    static bool IsSqlServer(this IModel model)
-    {
-        var dependencies = model.ModelDependencies;
-        var mappingSourceName = dependencies?.TypeMappingSource.GetType().Name;
-        return mappingSourceName == "SqlServerTypeMappingSource";
-    }
-    static ConversionResult QueryableToSql(object arg, IReadOnlyDictionary<string, object> context)
-    {
-        var queryable = (IQueryable) arg;
-
-        var sql = queryable.ToQueryString();
-        QueryableConverter.TryExecuteQueryable(queryable, out var result);
-        return new(result, [new("sql", sql)]);
     }
 
     public static DbContextOptionsBuilder<TContext> EnableRecording<TContext>(this DbContextOptionsBuilder<TContext> builder)
